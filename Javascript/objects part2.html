@@ -1,0 +1,83 @@
+<html>
+<head>
+	<title>Creating  Objects Part 2</title>
+	<script type="text/javascript">
+		function vehicleConstructor(name, wheels, passengers, speed)
+		{
+			var distance_travelled = 0;
+			var updateDistanceTravelled = function()
+			{
+				distance_travelled += speed;
+				return this;
+			};
+			var vehicle = {
+				name: name,
+				wheels: wheels,
+				passengers: passengers,
+				speed: speed,
+				makeNoise: function(noise)
+				{
+					console.log(name + ": " + noise);
+					return this;
+				},
+				move: function()
+				{
+					updateDistanceTravelled();
+					this.makeNoise();
+					return this;
+				},
+				checkMiles: function()
+				{
+					console.log(distance_travelled);
+					return this;
+				}
+			};
+
+			return vehicle;
+		}
+
+		//bike
+		var Bike = new vehicleConstructor('Bike', 2, 1, 6);
+		Bike.makeNoise = function()
+		{
+			console.log("ring ring");
+			return this;
+		}
+
+		Bike.makeNoise().move().move().checkMiles();
+		console.log(Bike);
+
+		//sedan
+		var Sedan = new vehicleConstructor('Sedan', 4, 4, 3);
+		Sedan.makeNoise = function()
+		{
+			console.log("Honk Honk");
+			return this;
+		}
+
+		Sedan.makeNoise().move().move().checkMiles();
+		console.log(Sedan);
+
+		//bus
+		var Bus = new vehicleConstructor('Bus', 4, 12, 8);
+		Bus.pickUpPassengers = function(num_of_passengers)
+		{
+			Bus.passengers += num_of_passengers;
+			console.log(Bus.name + " picked up " + Bus.passengers);
+			return this;
+		}
+		Bus.makeNoise = function()
+		{
+			console.log("Honk honk");
+			return this;
+		}
+
+		Bus.pickUpPassengers(3).move().move().checkMiles();
+		console.log(Bus);
+
+	</script>
+</head>
+<body>
+	<h1>Creating Objects Part 2</h1>
+</body>
+</html>

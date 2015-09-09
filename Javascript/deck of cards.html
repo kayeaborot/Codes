@@ -1,0 +1,121 @@
+<html>
+<head>
+	<title>Deck of Cards</title>
+	<script type="text/javascript">
+
+		var hand = "";
+		var deck = function deckConstructor()
+		{
+			this.cards = [];
+		}
+
+		deck.prototype.create_deck = function()
+		{
+			value = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
+			house = ["Diamond", "Spade", "Clover", "Heart"];
+			var value_counter = 0;
+			var house_counter = 0;
+
+			for(card = 0; card < 52; card ++)
+			{
+				if(house_counter == house.length)
+				{
+					house_counter = 0;
+					this.cards.push(value[value_counter] + " of " + house[house_counter]);
+					value_counter ++;
+					house_counter ++;
+				}
+				else if(value_counter == value.length)
+				{
+					value_counter = 0;
+					this.cards.push(value[value_counter] + " of " + house[house_counter]);
+					value_counter ++;
+					house_counter ++;
+				}
+				else
+				{
+					this.cards.push(value[value_counter] + " of " + house[house_counter]);
+					value_counter ++;
+					house_counter ++;
+				}
+			}
+
+			console.log("Deck created ", this.cards);
+			return this;
+		}
+
+		deck.prototype.shuffle_cards = function() 
+		{
+		  var currentIndex = this.cards.length, temporaryValue, randomIndex ;
+
+		  // While there remain elements to shuffle...
+		  while (0 !== currentIndex) 
+		  {
+		    // Pick a remaining element...
+		    randomIndex = Math.floor(Math.random() * currentIndex);
+		    currentIndex -= 1;
+
+		    // And swap it with the current element.
+		    temporaryValue = this.cards[currentIndex];
+		    this.cards[currentIndex] = this.cards[randomIndex];
+		    this.cards[randomIndex] = temporaryValue;
+		  }
+
+		  console.log("Deck was shuffled ", this.cards);
+		  return this;
+		}
+
+		deck.prototype.reset_cards = function()
+		{
+			this.cards = [];
+			this.create_deck();
+			console.log("Deck was reset ", this.cards);
+
+			return this;
+		}
+
+		deck.prototype.deal_card = function()
+		{
+			index = Math.floor(Math.random() * this.cards.length)
+			hand = this.cards[index];
+			this.cards.splice(index, 1);
+
+			// console.log("Removed " + hand + " " +this.cards);
+			return this;
+		}
+
+		var player = function playerConstructor(name)
+		{
+			this.name = name;
+			this.hand = "";
+		}
+
+		player.prototype.take_card = function(deal_card)
+		{
+			this.hand = hand;
+			console.log(this.name + " got " + this.hand);
+
+			return this;
+		};
+
+		player.prototype.discard_card = function(reset_cards)
+		{
+			console.log(this.name + " discarded " + this.hand);
+			this.hand = "";
+
+			return this;
+		};
+
+		//create deck
+		var deck1 = new deck();
+		deck1.create_deck().shuffle_cards().reset_cards();
+
+		//create player
+		var player1 = new player('kaye');
+		player1.take_card(deck1.deal_card()).discard_card(deck1.reset_cards());
+	</script>
+</head>
+<body>
+	<h1>Deck of Cards</h1>
+</body>
+</html>

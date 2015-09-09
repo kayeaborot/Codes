@@ -1,0 +1,95 @@
+<html>
+<head>
+	<title>Creating  Objects Part 3</title>
+	<script type="text/javascript">
+		var vehicle = function vehicleConstructor(name, wheels, passengers, speed)
+		{
+			this.name = name;
+			this.wheels = wheels;
+			this.passengers = passengers;
+			this.speed = speed;
+			this.distance_travelled = 0;
+			this.VIN_number = 0;
+		}
+
+		vehicle.prototype.updateDistanceTravelled = function()
+		{
+			this.distance_travelled += this.speed;
+			return this;
+		};
+
+		vehicle.prototype.makeNoise = function()
+		{
+			console.log("I'm a vehicle");
+			return this;
+		};
+
+		vehicle.prototype.move = function()
+		{
+			this.updateDistanceTravelled();
+			this.makeNoise();
+			return this;
+		};
+
+		vehicle.prototype.checkMiles = function()
+		{
+			console.log("The distance is: ",this.distance_travelled);
+			return this;
+		};
+
+		vehicle.prototype.create_VIN= function()
+		{
+			this.VIN_number = Math.floor((Math.random() * 100) + 1);
+			console.log("The VIN Number is: ",this.VIN_number);
+			return this;
+		};
+
+		//bike
+		var Bike = new vehicle ('Bike', 2, 1, 6);
+
+		Bike.makeNoise = function()
+		{
+			console.log("ring ring");
+			return this;
+		}
+
+		Bike.makeNoise().move().move().checkMiles().create_VIN();
+		console.log(Bike);
+
+		//sedan
+		var Sedan = new vehicle ('Sedan', 4, 4, 3);
+
+		Sedan.makeNoise = function()
+		{
+			console.log("Honk Honk");
+			return this;
+		}
+
+		Sedan.makeNoise().move().move().checkMiles().create_VIN();
+		console.log(Sedan);
+
+		//bus
+		var Bus = new vehicle ('Bus', 4, 12, 8);
+
+		Bus.pickUpPassengers = function(num_of_passengers)
+		{
+			Bus.passengers += num_of_passengers;
+			console.log(Bus.name + " picked up " + Bus.passengers);
+			return this;
+		}
+
+		Bus.makeNoise = function()
+		{
+			console.log("Honk honk");
+			return this;
+		}
+
+		Bus.pickUpPassengers(3).move().move().checkMiles().create_VIN();
+		console.log(Bus);
+
+	</script>
+</head>
+<body>
+	<h1>Creating Objects Part 3</h1>
+</body>
+</html>

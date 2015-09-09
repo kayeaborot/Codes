@@ -1,0 +1,151 @@
+<html>
+<head>
+	<title>JS Fundamentals Part 2</title>
+	<script type="text/javascript">
+		var array = [3,4,5, 2];
+
+		//standalone functions
+		function total_sum(x, y)
+		{
+			var sum = 0;
+
+			for (var i = x + 1; i < y; i++)
+				sum += i;
+
+			console.log(sum);
+		}
+
+		function minimum(array)
+		{
+			var min = array[0];
+
+			for (index in array)
+			{
+				if (array[index] < min)
+					min = array[index];
+			}
+
+			console.log(min);
+		}
+
+		function average(array)
+		{
+			var sum = 0;
+
+			for (index in array)
+				sum += array[index];
+
+			var avg = sum / array.length;
+			console.log(avg);
+		}
+
+		//anonymous functions
+		var total_sum = function(x, y)
+		{
+			var sum = 0;
+
+			for (var i = x + 1; i < y; i++)
+				sum += i;
+
+			console.log(sum);
+		}
+
+		var minimum = function(array)
+		{
+			var min = array[0];
+
+			for (index in array)
+			{
+				if (array[index] < min)
+					min = array[index];
+			}
+
+			console.log(min);
+		}
+
+		var average = function(array)
+		{
+			var sum = 0;
+
+			for (index in array)
+				sum += array[index];
+
+			var avg = sum / array.length;
+			console.log(avg);
+		}
+
+		//method functions
+		var part1 = { 
+
+			total_sum : function(x, y)
+			{
+				var sum = 0;
+				
+				for (var i = x + 1; i < y; i++)
+					sum += i;
+
+				console.log(sum);
+			},
+
+			minimum : function(array)
+			{
+				var min = array[0];
+
+				for (index in array)
+				{
+					if (array[index] < min)
+						min = array[index];
+				}
+
+				console.log(min);
+			},
+
+			average : function(array)
+			{
+				var sum = 0;
+
+				for (index in array)
+					sum += array[index];
+
+				var avg = sum / array.length;
+				console.log(avg);
+			}
+		}
+
+		var persons = {
+			name : 'Kaye',
+			distance_travelled : 0,
+			say_name : function()
+			{
+				alert("The name is: " + persons.name);
+			},
+
+			say_something : function(message)
+			{
+				alert(persons.name + " says " + message);
+			},
+
+			walk : function()
+			{
+				alert(persons.name + " is walking");
+				persons.distance_travelled += 3;
+			},
+
+			run : function()
+			{
+				alert(persons.name + " is running");
+				persons.distance_travelled += 10;
+			},
+
+			crawl : function()
+			{
+				alert(persons.name + " is crawling");
+				persons.distance_travelled += 1;
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>JS Fundamentals</h1>
+</body>
+</html>

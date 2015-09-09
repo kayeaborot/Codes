@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+	<title>JS Fundamentals Part 1</title>
+	<script type="text/javascript">
+	//1
+	var array = [3,5,'Dojo', 'rocks', 'Michael', 'Sensei'];
+
+	for (index in array)
+	{
+		console.log("array = ", array[index]);
+	}
+
+	//2
+	array.push(100);
+
+	//3
+	var arr = ['new', 'array'];
+	array.push(arr);
+	console.log("array = ", array);
+
+	//4
+	var sum = 0;
+
+	for(var i = 1; i < 500; i++)
+		sum += i;
+
+	console.log("The sum is: ", sum);
+
+	//5
+	var new_array = [1, 5, 90, 25, -3, 0];
+	var min = new_array[0];
+
+	for(index in new_array)
+	{
+		if (new_array[index] < min)
+			min = new_array[index];
+	}
+
+	console.log("The min is: ", min);
+
+	//6
+	var sum = 0;
+	var avg = 0;
+
+	for(index in new_array)
+		sum += new_array[index];
+
+	avg = sum / new_array.length;
+
+	console.log("The average is: ", avg);
+</script>
+</head>
+<body>
+	<h1>JS Fundamentals Part 1</h1>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<html>
+<head>
+	<title>Javascript Library</title>
+	<script type="text/javascript">
+		var _ = {
+		   map: function(array, callback) 
+		   {
+		   		var result = [];
+
+		   		for(var index = 0; index < array.length; index ++)
+		   		{
+		   			var num = callback(array[index]);
+		   			result.push(num);
+		   		}
+
+		   		return result;
+		   },
+		   reduce: function(array, callback, memo) 
+		   {
+		   		for (var index = 0; index < array.length; index ++)
+		   		{
+		   			memo = callback(memo, array[index]);
+		   		}
+
+		   		var result = memo;
+		   		return result;
+		   },
+		   find: function(array, callback) 
+		   {
+		   		for (var index = 0; index < array.length; index ++)
+		   		{
+					if(callback(array[index]))
+		   				return array[index];
+		   		}
+		   },
+		   filter: function(array, callback) 
+		   {
+	   			var result = [];
+
+	   			for (var index = 0; index < array.length; index ++)
+		   		{
+					if(callback(array[index]))
+		   				result.push(array[index]);
+		   		}
+
+		   		return result;
+		   },
+		   reject: function(array, callback) 
+		   {
+		   		var result = [];
+
+	   			for (var index = 0; index < array.length; index ++)
+		   		{
+					if(!callback(array[index]))
+		   				result.push(array[index]);
+		   		}
+
+		   		return result;
+		   }
+		}
+
+		//_map
+		var map = _.map([1, 2, 3, 4, 5, 6], function(num){ return num * 5; });
+		console.log("The result of map is: ", map);
+
+		//_reduce
+		var reduce = _.reduce([1, 2, 3, 4, 5, 6], function(memo, num){ return memo + num; }, 0);
+		console.log("The result of reduce is: ", reduce);
+
+		//_find
+		var find = _.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+		console.log("The result of find is: ", find);
+
+		//_filter
+		var filter = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+		console.log("The result of filter is: ",filter);
+
+		//_reject
+		var reject = _.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+		console.log("The result of reject is: ",reject);
+
+	</script>
+</head>
+<body>
+	<h1>Javascript Library</h1>
+</body>
+</html>

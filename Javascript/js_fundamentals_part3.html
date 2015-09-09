@@ -1,0 +1,81 @@
+<html>
+<head>
+	<title>JS Fundamentals Part 3</title>
+	<script type="text/javascript">
+
+		function personConstructor(name)
+		{
+			var persons = {
+				name : name,
+				distance_travelled : 0,
+				say_name : function()
+				{
+					alert("The name is: " + persons.name);
+					return this;
+				},
+
+				say_something : function(message)
+				{
+					alert(persons.name + " says " + message);
+					return this;
+				},
+
+				walk : function()
+				{
+					alert(persons.name + " is walking");
+					persons.distance_travelled += 3;
+					console.log(persons.distance_travelled);
+					return this;
+				},
+
+				run : function()
+				{
+					alert(persons.name + " is running");
+					persons.distance_travelled += 10;
+					console.log(persons.distance_travelled);
+					return this;
+				},
+
+				crawl : function()
+				{
+					alert(persons.name + " is crawling");
+					persons.distance_travelled += 1;
+					console.log(persons.distance_travelled);
+					return this;
+				}
+			}
+
+			return persons;
+		}
+
+		function ninjaConstructor(name)
+		{
+			var level = 0;
+			var ninja = {
+				name: name,
+				cohort: "asdad",
+				belt_level: "yellow_belt",
+				levelUp: function()
+				{
+					var belts = ["yellow_belt", "green_belt", "red_belt", "black_belt"];
+
+					level ++;
+					ninja.belt_level = belts[level];
+					alert(ninja.name + "'s level is " + ninja.belt_level);
+					return this;
+				}
+			}
+			return ninja;
+		}
+
+		var Kaye = personConstructor('Kaye');
+		Kaye.say_name().say_something('hello').walk().run().crawl();
+
+		var Kaye = ninjaConstructor('Kaye');
+		Kaye.levelUp();
+	</script>
+</head>
+<body>
+	<h1>JS Fundamentals Part 3</h1>
+</body>
+</html>

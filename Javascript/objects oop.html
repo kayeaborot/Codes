@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title>Objects Part1</title>
+	<script type="text/javascript">
+		function vehicleConstructor(name, wheels, passengers)
+		{
+			var vehicle = {
+				name: name,
+				wheels: wheels,
+				passengers: passengers,
+				makeNoise: function(noise)
+				{
+					console.log(vehicle.name + ": " + noise);
+				},
+			}
+			return vehicle;
+		}
+
+		//bike
+		var Bike = vehicleConstructor('Bike', 2, 1);
+		Bike.makeNoise = function()
+		{
+			console.log("ring ring");
+		}
+		Bike.makeNoise();
+
+		//sedan
+		var Sedan = vehicleConstructor('Sedan', 4, 4);
+		Sedan.makeNoise = function()
+		{
+			console.log("Honk Honk");
+		}
+		Sedan.makeNoise();
+
+		//bus
+		var Bus = vehicleConstructor('Bus', 4, 12);
+		Bus.pickUpPassengers = function(num_of_passengers)
+		{
+			Bus.passengers += num_of_passengers;
+			console.log(Bus.name + " picked up " + Bus.passengers);
+		}
+		Bus.pickUpPassengers(3);
+	</script>
+</head>
+<body>
+	<h1>Creating Objects Part1</h1>
+</body>
+</html>
